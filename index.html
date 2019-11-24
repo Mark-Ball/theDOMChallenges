@@ -11,12 +11,7 @@
       viverra ipsum eu eleifend. Donec tortor risus, auctor nec ultrices id,
       cursus vitae orci. Phasellus lacinia vulputate suscipit. In nec elit in
       justo pretium ultrices. Aliquam convallis maximus nisi. Nunc tempor erat a
-      ultricies bibendum. Nam quis massa eget odio mollis consectetur non ut
-      purus. Quisque consequat urna volutpat eros placerat pellentesque.
-      Phasellus non nisi in nisi dignissim dignissim in eu dolor. Curabitur
-      vulputate elit nec cursus ullamcorper. Nulla ac eleifend ante, at semper
-      mauris. Quisque tincidunt mattis turpis, vel molestie ipsum pulvinar et.
-      Aenean quis ex imperdiet nunc porta mollis sit amet in eros.
+      ultricies bibendum.
     </p>
     <button>New image</button>
     <input type="color" />
@@ -30,14 +25,28 @@
       //Add your code under here
       let imgTag = document.querySelector("img"); 
 
+      // randomises image when button is clicked
       document.querySelector("button").addEventListener("click", () => {
         imgTag.src = `https://picsum.photos/600/400?image=${randNumber()}`;
       });
 
+      // updates paragraph based on color picker
       let pTag = document.querySelector("p");
       let color = document.querySelector("input[type=color]");
       color.addEventListener("change", () => {
         pTag.style.color = color.value;
+      });
+
+      // updates the header when text is typed into the box
+      let header = document.querySelector("h1");
+      const originalHeader = header.innerHTML;
+      let txt = document.querySelector("input[type=text]");
+      txt.addEventListener("keyup", () => {
+        header.innerHTML = txt.value;
+
+        if (txt.value === "") {
+          header.innerHTML = originalHeader;
+        }
       });
     </script>
   </body>
